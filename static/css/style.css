@@ -1,0 +1,496 @@
+/* --- Variables --- */
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+:root {
+--gradient:
+    transparent 30%,
+    #ffe4e6,
+    #ffccd9,
+    #ffb6c1,
+    #ff9fb3,
+    #ff8aa6,
+    #ff8aa6,
+    #ff9fb3,
+    #ffb6c1,
+    #ffccd9,
+    #ffe4e6,
+    transparent 60%;
+
+--blur-size: 0.3rem;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- BODY --- */
+
+body {
+    background: #555;
+    user-select: none;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Containers --- */
+
+.container-pages,
+.container-sites {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  padding: 10px;
+}
+
+.container-pages { 
+    bottom: 50px; 
+    gap: 30px;
+}
+
+.container-sites { 
+    top: 50px; 
+    gap: 20px; 
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Page Button --- */
+
+.page-button {
+    width: 90px;
+    height: 90px;
+    background: transparent;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+    user-select: none;
+    overflow: visible;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s  ease-in-out, opacity 0.6s ease-in-out;
+    white-space: nowrap;
+    text-align: center;
+    text-decoration: none;
+}
+
+.page-button:after,
+.page-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.page-button:before {
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    background: conic-gradient(from var(--angle), var(--gradient));
+    border-radius: 24px;
+    animation: spin 3s linear infinite;
+}
+
+.page-button:after {
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.page-button-blur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    background: conic-gradient(from var(--angle), var(--gradient));
+    border-radius: 24px;
+    filter: blur(var(--blur-size));
+    animation: spin 3s linear infinite;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.page-button-back {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    background: #888;
+    border-radius: 24px;
+    opacity: 0.6;
+    z-index: -3;
+}
+
+.page-button.no-animation::before {
+  animation: none;
+}
+
+.page-button-blur.no-animation {
+  animation: none;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Site Button --- */
+
+.site-button {
+    width: 90px;
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.45);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.3s, transform 0.3s  ease-in-out, opacity 0.6s ease-in-out;
+    position: relative;
+    white-space: nowrap;
+    z-index: 1;
+    cursor: pointer;
+    user-select: none;
+    overflow: visible;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Site Icon --- */
+
+.icon {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Site Button Text --- */
+
+.site-button-text {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 90px;
+    width: auto;
+    height: auto;
+    color: rgba(242, 157, 224, 0.65);
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 12px;
+    font-family: 'Comfortaa', sans-serif;
+    padding: 4px;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.site-button-text:after,
+.site-button-text:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.site-button-text:before {
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: conic-gradient(from var(--angle), var(--gradient));
+    border-radius: 8px;
+    animation: spin 1.85s linear infinite;
+}
+
+.site-button-text:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(15, 15, 15, 1);
+}
+
+.site-button-text-blur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: conic-gradient(from var(--angle), var(--gradient));
+    border-radius: 8px;
+    filter: blur(var(--blur-size));
+    animation: spin 1.85s linear infinite;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.site-button-text-back {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: #888;
+    border-radius: 8px;
+    opacity: 0.6;
+    z-index: -3;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Page Button Text --- */
+
+.page-button-text {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 90px;
+    width: auto;
+    height: auto;
+    color: rgba(242, 157, 224, 0.65);
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 12px;
+    font-family: 'Comfortaa', sans-serif;
+    padding: 4px;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 0;
+}
+
+.page-button-text:after,
+.page-button-text:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.page-button-text:before {
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: conic-gradient(from var(--angle), var(--gradient));
+    border-radius: 8px;
+    animation: spin 1.85s linear infinite;
+}
+
+.page-button-text:after {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: rgba(15, 15, 15, 1);
+}
+
+.page-button-text-blur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: conic-gradient(from var(--angle), var(--gradient));
+    border-radius: 8px;
+    filter: blur(var(--blur-size));
+    animation: spin 1.85s linear infinite;
+    pointer-events: none;
+    z-index: -2;
+}
+
+.page-button-text-back {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    background: #888;
+    border-radius: 8px;
+    opacity: 0.6;
+    z-index: -3;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Contex Menu --- */
+
+#custom-context-menu {
+  position: fixed;
+  display: none;
+  background: #ffb6c1;
+  border: 2px solid #fc6b85;
+  border-radius: 20px;
+  z-index: 1000;
+  min-width: 250px;
+  overflow: hidden;
+}
+
+.context-menu-item {
+  flex: 1;
+  display: flex;
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+  justify-content: center;
+  font-size: 1em;
+  color: #fff;
+  transition: all 0.5s ease;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.context-menu-item:hover, .action-left:hover, .action-right:hover {
+  background: #fc6b85;
+}
+
+.double-action-button {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  box-shadow: none;
+}
+
+.action-left, .action-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  transition: all 0.5s ease;
+  background: #ffb6c1;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  font-size: 1em;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Other --- */
+
+.custom-placeholder::placeholder {
+    color: #999;
+}
+
+.scale-down {
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.sortable-ghost {
+  opacity: 0.6;
+}
+
+
+.sortable-drag {
+    opacity: 0;
+}
+
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Animation --- */
+
+@keyframes pulseCircle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pageReg {
+  0% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) translateX(-50%); }
+  100% { transform: translateY(-180px) translateX(-50%); }
+}
+
+@keyframes floatDown {
+  0% { transform: translateY(-180px) translateX(-50%); }
+  100% { transform: translateY(0) translateX(-50%); }
+}
+
+.scale-up {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+@keyframes floatDown2 {
+  0% { transform: translateY(0) translateX(-50%); }
+  100% { transform: translateY(180px) translateX(-50%); }
+}
+
+@keyframes floatUp2 {
+  0% { transform: translateY(180px) translateX(-50%); }
+  100% { transform: translateY(0) translateX(-50%); }
+}
+
+
+@keyframes backgroundFloat {
+    0% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.0);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+/* ---------------------------------------------------------------------- */

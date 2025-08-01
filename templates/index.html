@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Экспресс-панель</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='favicon/favicon.png') }}" type="image/png">
+</head>
+<body>
+
+<div id="container-sites" class="container-sites">
+</div>
+
+<div id="container-pages" class="container-pages">
+</div>
+
+<script type="module" src="/static/js/main.js"></script>
+<script src="/static/js/modules/Sortable.min.js"></script>
+</body>
+</html>
